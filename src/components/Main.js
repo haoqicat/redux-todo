@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import '../assets/global.css'
 import TodoContainer from '../containers/TodoContainer'
+import { PRIMARY } from '../constants/Colors'
 
 class Main extends Component {
   render() {
@@ -18,7 +19,7 @@ class Main extends Component {
 export default Main
 
 const Wrap = styled.div`
-  background-color: #6f9436;
+  background-color: ${PRIMARY};
   height: 100vh;
   display: flex;
   flex-direction: column;

@@ -3,14 +3,20 @@ import styled from 'styled-components'
 import List from './List'
 import TextInput from './TextInput'
 import Actions from './Actions'
+import PropTypes from 'prop-types'
 
-class Posts extends Component {
+const propTypes = {
+  todos: PropTypes.array.isRequired
+}
+
+class Todo extends Component {
   render() {
+    const { todos } = this.props
     return (
       <Wrap>
         <Title>Todo</Title>
         <ListWrap>
-          <List />
+          <List todos={todos} />
         </ListWrap>
         <TextInputWrap>
           <TextInput />
@@ -23,7 +29,9 @@ class Posts extends Component {
   }
 }
 
-export default Posts
+Todo.propTypes = propTypes
+
+export default Todo
 
 const Wrap = styled.div`
   display: flex;
