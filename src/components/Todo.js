@@ -48,13 +48,10 @@ const Title = styled.div`
 `
 
 const ListWrap = styled.div`
-  border: 1px solid red;
   flex-grow: 1;
 `
 
-const TextInputWrap = styled.div`
-  border: 1px solid red;
-`
+const TextInputWrap = styled.div``
 
 const ActionsWrap = styled.div`
   border: 1px solid red;
