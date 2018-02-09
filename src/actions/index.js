@@ -1,14 +1,22 @@
-import axios from 'axios'
-import { POSTS_URL } from '../constants/ApiConstants'
 import * as types from '../constants/ActionTypes'
 
-export const loadPosts = () => dispatch => {
-  axios.get(POSTS_URL).then(
-    res => {
-      dispatch({
-        type: types.LOAD_POSTS,
-        posts: res.data
-      })
-    }
-  )
+export const addTodo = text => dispatch => {
+  return dispatch({
+    type: types.ADD_TODO,
+    text
+  })
+}
+
+export const completeTodo = id => dispatch => {
+  return dispatch({
+    type: types.COMPLETE_TODO,
+    id
+  })
+}
+
+export const setFilter = filter => dispatch => {
+  return dispatch({
+    type: types.SET_FILTER,
+    filter
+  })
 }

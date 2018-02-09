@@ -6,23 +6,33 @@ import Actions from './Actions'
 import PropTypes from 'prop-types'
 
 const propTypes = {
-  todos: PropTypes.array.isRequired
+  todos: PropTypes.array.isRequired,
+  addTodo: PropTypes.func.isRequired,
+  completeTodo: PropTypes.func.isRequired,
+  setFilter: PropTypes.func.isRequired,
+  currentFilter: PropTypes.string.isRequired
 }
 
 class Todo extends Component {
   render() {
-    const { todos } = this.props
+    const {
+      todos,
+      addTodo,
+      completeTodo,
+      setFilter,
+      currentFilter
+    } = this.props
     return (
       <Wrap>
         <Title>Todo</Title>
         <ListWrap>
-          <List todos={todos} />
+          <List todos={todos} completeTodo={completeTodo} />
         </ListWrap>
         <TextInputWrap>
-          <TextInput />
+          <TextInput addTodo={addTodo} />
         </TextInputWrap>
         <ActionsWrap>
-          <Actions />
+          <Actions setFilter={setFilter} currentFilter={currentFilter} />
         </ActionsWrap>
       </Wrap>
     )
@@ -53,6 +63,4 @@ const ListWrap = styled.div`
 
 const TextInputWrap = styled.div``
 
-const ActionsWrap = styled.div`
-  border: 1px solid red;
-`
+const ActionsWrap = styled.div``

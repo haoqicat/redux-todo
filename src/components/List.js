@@ -5,16 +5,21 @@ import { GRAY, BLACK, LIGHT_PRIMARY } from '../constants/Colors'
 import RightIcon from './RightIcon'
 
 const propTypes = {
-  todos: PropTypes.array.isRequired
+  todos: PropTypes.array.isRequired,
+  completeTodo: PropTypes.func.isRequired
 }
 
 class List extends Component {
   render() {
-    const { todos } = this.props
+    const { todos, completeTodo } = this.props
     return (
       <Wrap>
         {todos.map(todo => (
-          <Todo completed={todo.completed} key={todo.id}>
+          <Todo
+            completed={todo.completed}
+            key={todo.id}
+            onClick={() => completeTodo(todo.id)}
+          >
             {todo.text}
             <IconWrap>
               {todo.completed && (

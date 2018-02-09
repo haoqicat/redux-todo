@@ -2,19 +2,53 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { LIGHT_PRIMARY } from '../constants/Colors'
 import AddIcon from './AddIcon'
+import PropTypes from 'prop-types'
+
+const propTypes = {
+  addTodo: PropTypes.func.isRequired
+}
 
 class TextInput extends Component {
+  state = {
+    text: ''
+  }
+
+  handleChange = e => {
+    this.setState({
+      text: e.target.value
+    })
+  }
+
+  handleSubmit = () => {
+    const { text } = this.state
+    if (text.length !== 0) {
+      this.props.addTodo(text)
+    }
+    this.setState({ text: '' })
+  }
+
+  handleKeyDown = e => {
+    if (e.which === 13) {
+      this.handleSubmit()
+    }
+  }
   render() {
     return (
       <Wrap>
-        <Input />
-        <Button>
+        <Input
+          value={this.state.text}
+          onChange={this.handleChange}
+          onKeyDown={this.handleKeyDown}
+        />
+        <Button onClick={this.handleSubmit}>
           <AddIcon fill="white" width="16" height="16" />
         </Button>
       </Wrap>
     )
   }
 }
+
+TextInput.propTypes = propTypes
 
 export default TextInput
 
